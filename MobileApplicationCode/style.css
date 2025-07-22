@@ -1,0 +1,137 @@
+body {
+  margin: 0;
+  padding: 20px;
+  font-family: 'Segoe UI', sans-serif;
+  background: #fff8f0;
+  color: #4e342e;
+}
+
+.wrapper {
+  max-width: 480px;
+  margin: auto;
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+header {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+h1 {
+  margin-bottom: 5px;
+  color: #d84315;
+}
+
+.gallery h2, .signup h2 {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+.gallery .items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: space-between;
+}
+
+.item {
+  flex: 1 1 45%;
+  background: #fff3e0;
+  border-radius: 10px;
+  text-align: center;
+  padding: 10px;
+  transition: background 0.3s ease;
+  cursor: pointer;
+}
+
+.item img {
+  width: 100%;
+  height: 130px;  /* slightly larger */
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  visibility: visible; /* default visible */
+}
+
+.item.highlight {
+  background-color: #ffe0b2;
+}
+
+.signup {
+  margin-top: 30px;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background: #d84315;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #bf360c;
+}
+
+#thankYouMsg {
+  background: #f1f8e9;
+  padding: 12px;
+  margin-top: 15px;
+  border-left: 5px solid #8bc34a;
+  border-radius: 8px;
+  display: none;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Modal styles */
+#imageModal {
+  display: none;
+  visibility: hidden;
+  position: fixed;
+  z-index: 9999;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0,0,0,0.8);
+  align-items: center;
+  justify-content: center;
+}
+
+#imageModal.show {
+  display: flex;
+  visibility: visible;
+}
+
+#imageModal img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 10px;
+  box-shadow: 0 0 15px #fff;
+}
+
+#imageModal .close-btn {
+  position: absolute;
+  top: 20px; right: 30px;
+  color: white;
+  font-size: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  user-select: none;
+}

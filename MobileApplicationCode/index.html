@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sweet Crumbs Bakery</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+  <div class="wrapper">
+    <header>
+      <h1>🍞 Sweet Crumbs Bakery</h1>
+      <p>Freshly baked happiness — delivered daily!</p>
+    </header>
+
+    <section class="gallery">
+      <h2>Our Bestsellers</h2>
+      <div class="items">
+        <div class="item">
+          <img src="https://i0.wp.com/www.pardonyourfrench.com/wp-content/uploads/2019/01/Classic-French-Croissant-Recipe-67.jpg?resize=1170%2C1779&ssl=1" alt="Croissant">
+          <p>🥐 Croissant</p>
+        </div>
+        <div class="item">
+          <img src="https://www.piesandtacos.com/wp-content/uploads/2024/05/Strawberry-Cake-6-scaled.jpg" alt="Strawberry Cake">
+          <p>🍰 Strawberry Cake</p>
+        </div>
+        <div class="item">
+          <img src="https://cravinghomecooked.com/wp-content/uploads/2019/08/chocolate-chip-cookies-1-14.jpg" alt="Cookies">
+          <p>🍪 Chocolate Chip Cookies</p>
+        </div>
+        <div class="item">
+          <img src="https://www.aberdeenskitchen.com/wp-content/uploads/2020/08/Classic-Crusty-French-Baguettes-3.jpg" alt="Baguette">
+          <p>🥖 French Baguette</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="signup">
+      <h2>Join Our Tasting Club</h2>
+      <form id="signupForm">
+        <input type="text" id="name" placeholder="Your Name" required />
+        <input type="email" id="email" placeholder="Your Email" required />
+        <button type="submit">Get Tasting Invites 🍩</button>
+      </form>
+      <div id="thankYouMsg" class="hidden"></div>
+    </section>
+  </div>
+
+  <!-- Modal -->
+  <div id="imageModal">
+    <span class="close-btn">&times;</span>
+    <img src="" alt="Full Image" />
+  </div>
+
+  <script>
+    $(document).ready(function () {
+      // Signup form submit
+      $("#signupForm").submit(function (e) {
+        e.preventDefault();
+        const name = $("#name").val();
+        $("#thankYouMsg").html(`<p>Thank you, <strong>${name}</strong>! You're now on our VIP tasting list 🎉</p>`);
+        $("#thankYouMsg").fadeIn(800).delay(3000).fadeOut(800);
+        $("#signupForm")[0].reset();
+      });
+
+      // Hover effect on items
+      $(".item").hover(
+        function () {
+          $(this).addClass("highlight");
+        },
+        function () {
+          $(this).removeClass("highlight");
+        }
+      );
+      // Open modal on image click
+      $(".item img").click(function () {
+        const src = $(this).attr("src");
+        $("#imageModal img").attr("src", src).css("visibility", "visible");
+        $("#imageModal").addClass("show").hide().fadeIn(300);
+      });
+      // Close modal on clicking close button or outside image
+      $("#imageModal .close-btn").click(function () {
+        $("#imageModal").fadeOut(300, function() {
+          $("#imageModal img").attr("src", "");
+          $("#imageModal").removeClass("show");
+        });
+      });
+      $("#imageModal").click(function (e) {
+        if (e.target.id === "imageModal") {
+          $(this).fadeOut(300, function() {
+            $("#imageModal img").attr("src", "");
+            $("#imageModal").removeClass("show");
+          });
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
